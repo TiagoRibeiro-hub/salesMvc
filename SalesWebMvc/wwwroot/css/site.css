@@ -1,0 +1,31 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.searchDdm {
+    cursor: pointer;
+}
+.simpleSearch {
+    display: none;
+}
+
+.closeBtn:hover{
+    font-weight: 900;
+    color: red;
+    cursor: pointer;
+}

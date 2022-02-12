@@ -1,0 +1,4 @@
+﻿dotnet ef migrations add Sales_Initial --context SalesDbContext  --output-dir Migrations 
+dotnet ef database update --context SalesDbContext
+
+

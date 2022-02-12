@@ -1,0 +1,61 @@
+﻿@model SellerViewModel
+@{
+    ViewData["Title"] = "Create Seller";
+    var error = TempData["Error"] as string;
+}
+
+<h2 class="mt-5 text-center">@ViewData["Title"]</h2>
+<hr />
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-4 mt-5">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mt-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" value="@ViewData["BirthDate"]"/>
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="BaseSalary" class="control-label"></label>
+                <input asp-for="BaseSalary" class="form-control" />
+                <span asp-validation-for="BaseSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Departments" class="control-label"></label>
+                <select asp-for="DepartmentId" class="form-select"
+                        asp-items="@(new SelectList(Model.Departments,"Id","Name"))">
+                        <option value="Department">--Select--</option>
+                </select>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(error))
+            {
+                <span class="text-danger">@error</span>
+            }
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <div class="mt-3">
+                <a asp-action="Sellers">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
